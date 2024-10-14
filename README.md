@@ -5,7 +5,7 @@
 
 <p align="center">
    <h2 align="center">
-    Alfabit Design System
+    BigBets Design System
     </h2>
 </p>
 
@@ -143,8 +143,7 @@ npm run storybook ou yarn storybook
 
 Esta é a equipe responsável pela criação desta biblioteca de componentes
 
-| [<img src="https://avatars.githubusercontent.com/u/26747059?v=4" width=115><br><sub>Neilton Seguins</sub>](https://github.com/lucianoguida1) |
-| :---: | :---: 
+| [<img src="https://avatars.githubusercontent.com/u/26747059?v=4" width=115><br><sub>Luciano Guida</sub>](https://github.com/lucianoguida1) |
 
 ## Licença 
 
