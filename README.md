@@ -25,7 +25,7 @@
   <a target="_blank" href="https://tailwindcss.com/">
     <img src="https://img.shields.io/static/v1?color=blue&label=Tailwind&message=CSS&?style=plastic&logo=TailwindCSS">
   </a>
-  <a target="_blank" href="https://tailwindcss.com/">
+  <a target="_blank" href="https://figma.com">
     <img src="https://img.shields.io/static/v1?color=red&label=Figma&message=  &?style=plastic&logo=Figma">
   </a>
 </p>
