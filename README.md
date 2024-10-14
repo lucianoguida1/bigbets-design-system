@@ -114,9 +114,9 @@ export default function Home() {
 
 ## 🎨 Quais cores foram utilizadas no padrão da biblioteca?
 
-Toda a identidade visual da biblioteca, como os componentes, espaçamentos e cores, você pode acessar no [Figma clicando aqui neste link](https://www.figma.com/file/h86gUvqUXTKwgr6tVYinLT/React%3A-Design-System-com-Tailwind?type=design&node-id=0-1&t=GuaFV9cp30SS2di9-0).
+Toda a identidade visual da biblioteca, como os componentes, espaçamentos e cores, você pode acessar no [Figma clicando aqui neste link](https://www.figma.com/design/XrnN0d9PvsvOeoSiAh8tRo/BigBets?node-id=0-1&node-type=canvas&t=EQ1CYF5Q2JQ8PgJx-0).
 
-> Confira também a documentação da biblioteca para mais detalhes de uso [Documentação](https://bigbets-ds.vercel.app/?path=/docs/design-tokens-colors--docs).
+> Confira também a documentação da biblioteca para mais detalhes de uso [Documentação](https://bigbets-design-system.vercel.app/).
 
 ## 📚 Quais dependências são usadas nesta biblioteca?
 - [React](https://reactjs.org/)

@@ -11,8 +11,8 @@ export type PainelProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const boxClassMap = {
-    primary: "bg-black",
-    secondary: "bg-tertiary",
+    primary: "bg-dark",
+    secondary: "bg-light",
 };
 
 const Painel = ({
@@ -34,8 +34,12 @@ const Painel = ({
     return (
         <div className={classes} {...rest}>
             {isTitle &&
-                <div className={classNames("rounded-md absolute top-[-10%] left-1/2 transform -translate-x-1/2 p-1 border-solid border-2 border-divider", boxClassMap[type])}>
-                    <Typography element="h1">{title}</Typography>
+                <div className={classNames(
+                    //"rounded-md absolute top-[-10%] left-1/2 transform -translate-x-1/2 p-1 pl-4 pr-4 border-solid border-2 border-divider",
+                    "rounded-md absolute top-[-0.5rem] left-1/2 transform -translate-x-1/2 pl-4 pr-4 border-solid border-2 border-divider",
+                    boxClassMap[type]
+                )}>
+                    <Typography element="h1" className="font-black text-xl">{title}</Typography>
                 </div>
             }
             <div className="text-gray-primary pt-1">
