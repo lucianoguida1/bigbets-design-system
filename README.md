@@ -62,7 +62,7 @@ A biblioteca Bigbets-ds foi criada para funcionar em aplicações Next.js+Tailwi
     ```tsx
     const config = {
     	presets: [
-    		require('<nome_do_modulo>/tailwind.config')
+    		require('bigbets-ds/tailwind.config')
     	]
     	// ... demais configurações ...
     }
@@ -76,7 +76,7 @@ A biblioteca Bigbets-ds foi criada para funcionar em aplicações Next.js+Tailwi
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
-        './node_modules/<nome_do_modulo>/components/**/*.{js,ts,jsx,tsx,mdx}'
+        './node_modules/bigbets-ds/components/**/*.{js,ts,jsx,tsx,mdx}'
       ]
     	// ... demais configurações ...
     }
@@ -87,7 +87,7 @@ A biblioteca Bigbets-ds foi criada para funcionar em aplicações Next.js+Tailwi
     ```jsx
     /** @type {import('next').NextConfig} */
     const nextConfig = {
-      transpilePackages: ["ds-bigbets-v1"],
+      transpilePackages: ["bigbets-ds"],
     };
     
     module.exports = nextConfig;
