@@ -26,7 +26,14 @@ export default meta
 export const Primary: StoryObj<LinkProps> = {
   args: {
     children: 'Link',
-    href: '/'
+    href: '/',
+  }
+}
+export const PrimaryIcon: StoryObj<LinkProps> = {
+  args: {
+    href: '/',
+    icon: 'Home',
+    sizeIcon: 22
   }
 }
 

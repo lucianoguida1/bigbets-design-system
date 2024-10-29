@@ -27,6 +27,13 @@ export const Primary: StoryObj<ButtonProps> = {
   },
 };
 
+export const PrimaryIcon: StoryObj<ButtonProps> = {
+  args: {
+    children: "",
+    icon: "Home"
+  },
+};
+
 export const Disabled: StoryObj<ButtonProps> = {
   args: {
     children: "Botão",
