@@ -15,10 +15,10 @@ export const Primary: StoryObj<MenuHeaderProps> = {
     args: {
         titulo: 'BIGBETS',
         links: [
-          { href: "/profile", text: "Perfil" },
-          { href: "/settings", text: "Configurações" },
-          { href: "/about", text: "Sobre" },
-          { href: "/contact", text: "Contato" },
+            { href: "/profile", text: "Perfil", icon: 'Home' },
+            { href: "/settings", text: "Configurações", icon: 'Home' },
+            { href: "/about", text: "Sobre", icon: 'Home' },
+            { href: "/contact", text: "Contato", icon: 'Home' },
         ]
     }
 }

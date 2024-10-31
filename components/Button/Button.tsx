@@ -4,7 +4,7 @@ export type ButtonProps = {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'tertiary';
   icon?: keyof typeof LucideIcons;
-  sizeIcon: number;
+  sizeIcon?: number;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 function getVariant(variant: ButtonProps['variant'], disabled: ButtonProps['disabled']) {

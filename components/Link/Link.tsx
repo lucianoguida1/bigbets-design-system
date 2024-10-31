@@ -4,7 +4,7 @@ import * as LucideIcons from 'lucide-react'; // Importa todos os ícones
 export type LinkProps = {
   children: React.ReactNode;
   icon?: keyof typeof LucideIcons;
-  sizeIcon: number;
+  sizeIcon?: number;
   disabled?: boolean;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 

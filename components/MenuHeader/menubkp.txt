@@ -1,31 +1,4 @@
-import React, { useState } from 'react';
-import * as LucideIcons from 'lucide-react'; // Importação dos ícones
-import Typography from '../Typography/Typography';
-import Link from '../Link/Link';
-import AvatarImage from '../Avatar/AvatarImage'; // Importe o componente AvatarImage
-
-export type LinkItem = {
-    href: string;
-    text: string;
-    icon?: keyof typeof LucideIcons;
-};
-
-export type MenuHeaderProps = {
-    logo?: string;
-    titulo: string;
-    links?: LinkItem[];
-};
-
-const MenuHeader = ({ logo, titulo, links = [], ...rest }: MenuHeaderProps) => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-    const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
-
-    return (
-        <header className="bg-black h-14 w-full" {...rest}>
-            <div className="w-full max-w-screen-desktop mx-auto flex justify-between items-center h-full px-4 desktop:px-8">
+<div className="w-full max-w-screen-desktop mx-auto flex justify-between items-center h-full px-4 desktop:px-8">
                 {/* Logo ou Nome do projeto à esquerda */}
                 <div className="flex items-center">
                     <Link href="/">
@@ -35,7 +8,7 @@ const MenuHeader = ({ logo, titulo, links = [], ...rest }: MenuHeaderProps) => {
                             <Typography
                                 element="h3"
                                 size="xl"
-                                className="!font-bold text-white cursor-pointer"
+                                className="font-bold text-white cursor-pointer"
                             >
                                 {titulo}
                             </Typography>
@@ -80,7 +53,7 @@ const MenuHeader = ({ logo, titulo, links = [], ...rest }: MenuHeaderProps) => {
                                             href={link.href}
                                             icon={link.icon}
                                             sizeIcon={20}
-                                            className="px-4 py-2 text-black hover:bg-gray-200 flex items-center space-x-2"
+                                            className="block px-4 py-2 text-black hover:bg-gray-200 flex items-center space-x-2"
                                         >
                                             {link.text}
                                         </Link>
@@ -91,8 +64,3 @@ const MenuHeader = ({ logo, titulo, links = [], ...rest }: MenuHeaderProps) => {
                     )}
                 </div>
             </div>
-        </header>
-    );
-};
-
-export default MenuHeader;

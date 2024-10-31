@@ -20,3 +20,7 @@ export { default as Typography } from "./Typography/Typography";
 export { type TypographyProps } from "./Typography/Typography";
 export { default as TextBlock } from "./TextBlock/TextBlock";
 export { type TextBlockProps } from "./TextBlock/TextBlock";
+export { default as MenuHeader } from "./MenuHeader/MenuHeader";
+export { type MenuHeaderProps } from "./MenuHeader/MenuHeader";
+export { default as Painel } from "./Painel/Painel";
+export { type PainelProps } from "./Painel/Painel";
