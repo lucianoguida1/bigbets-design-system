@@ -24,3 +24,5 @@ export { default as MenuHeader } from "./MenuHeader/MenuHeader";
 export { type MenuHeaderProps } from "./MenuHeader/MenuHeader";
 export { default as Painel } from "./Painel/Painel";
 export { type PainelProps } from "./Painel/Painel";
+export { default as Icon } from "./Icon/Icon";
+export { type IconProps } from "./Icon/Icon";

@@ -13,7 +13,6 @@ const meta: Meta<PainelProps> = {
             control: { type: 'select' }
         },
         className: { type: "string" },
-        isTitle: { type: "boolean" },
     },
 };
 
@@ -29,10 +28,15 @@ export const Default: StoryObj<PainelProps> = {
     args: {}
 }
 
-export const NoTitle: StoryObj<PainelProps> = {
+export const Title: StoryObj<PainelProps> = {
     args: {
-        isTitle: false
+        title: "Exemplo Pequeno",
+        classTitle: "text-xl"
     }
+}
+
+export const NoTitle: StoryObj<PainelProps> = {
+    args: {}
 }
 
 export const Secondary: StoryObj<PainelProps> = {
@@ -43,7 +47,6 @@ export const Secondary: StoryObj<PainelProps> = {
 
 export const SecondaryNoTitle: StoryObj<PainelProps> = {
     args: {
-        type: 'secondary',
-        isTitle: false
+        type: 'secondary'
     }
 }

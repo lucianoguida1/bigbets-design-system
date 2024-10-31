@@ -29,7 +29,7 @@ const Dropdown = ({ list, ...rest }: DropdownProps) => {
           />
           <Combobox.Button className={dropdownStyles.button}>
             <ChevronDownIcon
-              className="h-5 w-5 text-primary"
+              className="h-5 w-5 text-gray-primary"
               aria-hidden="true"
             />
           </Combobox.Button>
@@ -59,7 +59,7 @@ const Dropdown = ({ list, ...rest }: DropdownProps) => {
                     <>
                       <span
                         className={`block truncate ${
-                          selected ? "font-medium text-primary" : "font-normal"
+                          selected ? "!font-medium text-primary" : "font-normal"
                         }`}
                       >
                         {item}

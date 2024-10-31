@@ -4,9 +4,9 @@ import Typography from "../Typography/Typography";
 
 
 export type PainelProps = {
-    title: string,
-    isTitle?: boolean;
+    title?: string,
     type?: "primary" | "secondary";
+    classTitle?: string,
     children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -16,15 +16,15 @@ const boxClassMap = {
 };
 
 const Painel = ({
-    title = "Defina um titulo",
-    isTitle = true,
+    title,
     type = "primary",
     children,
+    classTitle,
     className,
     ...rest
 }: PainelProps) => {
     const classes = classNames(
-        "p-2 border-solid border-2 border-divider relative", // Adicionei 'relative' aqui
+        "p-2 border-solid border border-divider relative", // Adicionei 'relative' aqui
         {
             "rounded-md": true,
             "border border-gray-100": true,
@@ -33,12 +33,12 @@ const Painel = ({
     );
     return (
         <div className={classes} {...rest}>
-            {isTitle &&
+            {title &&
                 <div className={classNames(
-                    "rounded-md absolute top-[-1.3rem] left-1/2 transform -translate-x-1/2 pl-4 pr-4 border-solid border-2 border-divider",
+                    "rounded-sm absolute top-[-1.3rem] left-1/2 transform -translate-x-1/2 pl-4 pr-4 border-solid border border-divider",
                     boxClassMap[type]
                 )}>
-                    <Typography element="h1" className="font-black text-tmd">{title}</Typography>
+                    <Typography element="h1" className={classNames("!font-bold",classTitle)}>{title}</Typography>
                 </div>
             }
             <div className="text-gray-primary pt-1">
