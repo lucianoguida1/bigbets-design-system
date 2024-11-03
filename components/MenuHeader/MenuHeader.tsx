@@ -73,7 +73,7 @@ const MenuHeader = ({ logo, titulo, links = [], ...rest }: MenuHeaderProps) => {
                                 <LucideIcons.Menu className="h-6 w-6" />
                             </button>
                             {isDropdownOpen && (
-                                <div className="absolute right-4 mt-2 w-48 bg-white shadow-md rounded-md py-2">
+                                <div className="absolute right-4 mt-2 w-48 bg-white shadow-md rounded-md py-2 z-50">
                                     {links.map((link, index) => (
                                         <Link
                                             key={index}

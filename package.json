@@ -1,6 +1,6 @@
 {
   "name": "bigbets-ds",
-  "version": "1.0.19",
+  "version": "1.0.33",
   "private": false,
   "scripts": {
     "dev": "next dev",
