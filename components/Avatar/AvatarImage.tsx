@@ -1,15 +1,14 @@
-import Image from "next/image";
-
 export type AvatarImageProps = {
   src: string;
-  altDescription: string | "";
+  altDescription: string;
 };
 
 const AvatarImage = ({ src, altDescription }: AvatarImageProps) => {
   return (
     <div>
-      <Image
-        src={src}
+      {/* Utiliza `img` para compatibilidade independente do Next.js */}
+      <img
+        src={src || ''}
         alt={altDescription}
         className="rounded-full"
         width={100}
