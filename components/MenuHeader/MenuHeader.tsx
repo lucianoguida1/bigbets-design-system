@@ -12,11 +12,12 @@ export type LinkItem = {
 
 export type MenuHeaderProps = {
     logo?: string;
+    classNamesLogo?: string;
     titulo: string;
     links?: LinkItem[];
 };
 
-const MenuHeader = ({ logo, titulo, links = [], ...rest }: MenuHeaderProps) => {
+const MenuHeader = ({ logo, classNamesLogo, titulo, links = [], ...rest }: MenuHeaderProps) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -30,7 +31,7 @@ const MenuHeader = ({ logo, titulo, links = [], ...rest }: MenuHeaderProps) => {
                 <div className="flex items-center">
                     <Link href="/">
                         {logo ? (
-                            <AvatarImage src={logo} altDescription={titulo} /> // Substitui img por AvatarImage
+                            <AvatarImage classNames={classNamesLogo} src={logo} altDescription={titulo} /> // Substitui img por AvatarImage
                         ) : (
                             <Typography
                                 element="h3"
