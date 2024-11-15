@@ -57,7 +57,7 @@ const MenuHeader = ({ logo, classNamesLogo, titulo, links = [], ...rest }: MenuH
                                     sizeIcon={20}
                                     className="text-white hover:text-gray-400 flex items-center space-x-2"
                                 >
-                                    {link.text}
+                                    {' '+link.text}
                                 </Link>
                             ))}
                         </div>
