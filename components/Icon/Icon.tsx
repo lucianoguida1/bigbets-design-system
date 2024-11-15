@@ -1,19 +1,16 @@
 import * as LucideIcons from 'lucide-react'; // Importa todos os ícones
+import { LucideProps } from 'lucide-react';
 
 export interface IconProps {
   name: keyof typeof LucideIcons; // Garantir que 'name' seja uma chave válida do objeto 'LucideIcons'
   color?: string; // Cor opcional
-  size?: string;  // Tamanho opcional
+  size?: number;  // Tamanho opcional como number
   className?: string; // Classe CSS opcional para estilização
 }
 
-const Icon = ({ name, color = 'black', size = '24', className = '' }: IconProps) => {
-  const LucideIcon = name ? LucideIcons[name] : null;
-
-  // Verifica se o ícone existe
-  if (!LucideIcon) {
-    return <span>Ícone não encontrado</span>;
-  }
+const Icon = ({ name, color = 'black', size = 24, className = '' }: IconProps) => {
+  // Acessa o ícone dinamicamente e o tipa como React.ComponentType<LucideProps>
+  const LucideIcon = LucideIcons[name] as React.ComponentType<LucideProps>;
 
   // Renderiza o ícone com as propriedades fornecidas, incluindo className
   return <LucideIcon color={color} size={size} className={className} />;

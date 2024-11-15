@@ -6,7 +6,7 @@ export type BoxProps = {
   border?: boolean;
   filledBackground?: boolean;
   type?: "primary" | "secondary" | "dark" | "alert" | "success" | "error";
-  children: React.ReactNode;
+  children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const boxClassMap = {
@@ -18,7 +18,7 @@ const boxClassMap = {
   error: "bg-red-100 text-red-100",
 };
 
-const Box = ({
+const Box: React.FC<BoxProps> = ({
   rounded = false,
   border = false,
   filledBackground = false,
@@ -26,13 +26,17 @@ const Box = ({
   children,
   className,
   ...rest
-}: BoxProps) => {
-  const classes = classNames({
-    "rounded-md": rounded,
-    "border border-gray-100": border,
-    "bg-dark": filledBackground,
-    [boxClassMap[type]]: type,
-  });
+}) => {
+  const classes = classNames(
+    {
+      "rounded-md": rounded,
+      "border border-gray-100": border,
+      "bg-dark": filledBackground,
+      [boxClassMap[type]]: type,
+    },
+    className
+  );
+
   return (
     <div className={classes} {...rest}>
       {children}

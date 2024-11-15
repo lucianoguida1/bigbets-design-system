@@ -38,7 +38,7 @@ const Painel = ({
                     "rounded-sm absolute top-[-1.3rem] left-1/2 transform -translate-x-1/2 pl-4 pr-4 border-solid border border-divider",
                     boxClassMap[type]
                 )}>
-                    <Typography element="h1" className={classNames("!font-bold",classTitle)}>{title}</Typography>
+                    <Typography element="h1" className={classNames("!font-bold whitespace-nowrap",classTitle)}>{title}</Typography>
                 </div>
             }
             <div className="text-gray-primary pt-1">

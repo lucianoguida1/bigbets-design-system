@@ -1,4 +1,5 @@
 import * as LucideIcons from 'lucide-react'; // Importa todos os ícones
+import { LucideProps } from 'lucide-react';
 
 export type ButtonProps = {
   children: React.ReactNode;
@@ -19,9 +20,9 @@ function getVariant(variant: ButtonProps['variant'], disabled: ButtonProps['disa
   }
 }
 
-const Button = ({ variant = 'primary',sizeIcon = 20, icon, children, className, disabled, ...rest }: ButtonProps) => {
-  // Acessa o ícone dinamicamente
-  const LucideIcon = icon ? LucideIcons[icon] : null;
+const Button = ({ variant = 'primary', sizeIcon = 20, icon, children, className, disabled, ...rest }: ButtonProps) => {
+  // Acessa o ícone dinamicamente com uma tipagem para React.ComponentType
+  const LucideIcon = icon ? (LucideIcons[icon] as React.ComponentType<LucideProps>) : null;
 
   return (
     <button
