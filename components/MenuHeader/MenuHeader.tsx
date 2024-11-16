@@ -83,7 +83,7 @@ const MenuHeader = ({ logo, classNamesLogo, titulo, links = [], ...rest }: MenuH
                                             sizeIcon={20}
                                             className="px-4 py-2 text-black hover:bg-gray-200 flex items-center space-x-2"
                                         >
-                                            {link.text}
+                                            {' '+link.text}
                                         </Link>
                                     ))}
                                 </div>
