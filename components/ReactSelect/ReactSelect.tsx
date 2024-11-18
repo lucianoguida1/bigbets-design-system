@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AsyncSelect from "react-select/async";
 import { SingleValue, MultiValue } from "react-select";
 
 export type ReactSelectProps = {
   url_api: string;
   multSelect?: boolean;
-  dados_inicial?: {};
+  className?: string;
+  defaultValue?: SingleValue<OptionType> | MultiValue<OptionType>;
+  defaultOptions?: OptionType[];
+  incrementDefaultOptions?: boolean;
+  onChange?: (
+    selectedValue: SingleValue<OptionType> | MultiValue<OptionType>
+  ) => void;
 };
 
 type OptionType = {
@@ -16,42 +22,25 @@ type OptionType = {
 const ReactSelect = ({
   url_api,
   multSelect = false,
+  className = "",
+  defaultValue = null,
+  defaultOptions = [],
+  incrementDefaultOptions = true,
+  onChange,
   ...rest
 }: ReactSelectProps) => {
   const [selectedOption, setSelectedOption] = useState<
     SingleValue<OptionType> | MultiValue<OptionType> | null
-  >(null);
-  const [defaultOptions, setDefaultOptions] = useState<OptionType[]>([]);
+  >(defaultValue);
 
-  // Função para buscar os valores iniciais do endpoint sem parâmetros
-  const fetchDefaultOptions = async () => {
-    try {
-      const response = await fetch(url_api, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
+  const [currentDefaultOptions, setCurrentDefaultOptions] =
+    useState<OptionType[]>(defaultOptions);
 
-      if (!response.ok) {
-        throw new Error(`Erro na requisição inicial: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const options = data.paises.map((item: any) => ({
-        value: item.id,
-        label: item.nome,
-      }));
-
-      setDefaultOptions(options); // Define as opções padrão
-    } catch (error) {
-      console.error("Erro ao buscar valores padrão:", error);
-    }
-  };
-
-  // Função para buscar opções com base na entrada do usuário
   const fetchOptions = async (inputValue: string) => {
-    if (!inputValue) return defaultOptions; // Retorna os valores padrão se não houver entrada
     try {
-      const response = await fetch(`${url_api}?search=${inputValue}`, {
+      // Constrói a URL para busca
+      let new_url = url_api.includes("?") ? `${url_api}&` : `${url_api}?`;
+      const response = await fetch(`${new_url}search=${inputValue}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -61,18 +50,19 @@ const ReactSelect = ({
       }
 
       const data = await response.json();
-      const newOptions = data.paises.map((item: any) => ({
+      const newOptions = data.data.map((item: any) => ({
         value: item.id,
         label: item.nome,
       }));
 
-      // Mescla os novos itens buscados com os defaults (removendo duplicados)
-      setDefaultOptions((prevOptions) => {
-        const allOptions = [...prevOptions, ...newOptions];
-        return Array.from(
-          new Map(allOptions.map((opt) => [opt.value, opt])).values()
-        );
-      });
+      if (incrementDefaultOptions) {
+        setCurrentDefaultOptions((prevOptions) => {
+          const allOptions = [...prevOptions, ...newOptions];
+          return Array.from(
+            new Map(allOptions.map((opt) => [opt.value, opt])).values()
+          );
+        });
+      }
 
       return newOptions;
     } catch (error) {
@@ -84,25 +74,25 @@ const ReactSelect = ({
   const handleChange = (
     newValue: SingleValue<OptionType> | MultiValue<OptionType>
   ) => {
-    setSelectedOption(newValue);
+    setSelectedOption(newValue); // Atualiza o estado interno
+    if (onChange) {
+      onChange(newValue); // Chama a função passada via props
+    }
   };
 
-  useEffect(() => {
-    // Busca os valores padrão ao montar o componente
-    fetchDefaultOptions();
-  }, []);
-
   return (
-    <AsyncSelect
-      isMulti={multSelect} // Define se é múltipla seleção
-      cacheOptions
-      loadOptions={fetchOptions} // Incrementa com a busca
-      defaultOptions={defaultOptions} // Define os valores iniciais padrão
-      value={selectedOption} // Valor atual selecionado
-      onChange={handleChange} // Atualiza o estado
-      placeholder="Digite para buscar..."
-      {...rest}
-    />
+    <div className={className}>
+      <AsyncSelect
+        isMulti={multSelect}
+        cacheOptions
+        loadOptions={fetchOptions}
+        defaultOptions={currentDefaultOptions} // Usa o estado `currentDefaultOptions`
+        value={selectedOption}
+        onChange={handleChange} // Handler atualizado
+        placeholder="Digite para buscar..."
+        {...rest}
+      />
+    </div>
   );
 };
 

@@ -28,12 +28,12 @@ type Story = StoryObj<typeof ReactSelect>;
 
 export const Primary: Story = {
   args: {
-    url_api: "http://localhost:3001/pais",
+    url_api: "http://localhost:3001/paisform",
   },
 };
 
 export const Common: Story = {
   args: {
-    url_api: "http://localhost:3001/pais",
+    url_api: "http://localhost:3001/paisform",
   },
 };
