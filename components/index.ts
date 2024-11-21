@@ -28,3 +28,5 @@ export { default as Icon } from "./Icon/Icon";
 export { type IconProps } from "./Icon/Icon";
 export { default as ReactSelect } from "./ReactSelect/ReactSelect";
 export { type ReactSelectProps } from "./ReactSelect/ReactSelect";
+export { default as ReactTable } from "./ReactTable/ReactTable";
+export { type ReactTableProps } from "./ReactTable/ReactTable";

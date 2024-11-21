@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AsyncSelect from "react-select/async";
 import { SingleValue, MultiValue } from "react-select";
 
@@ -10,7 +10,7 @@ export type ReactSelectProps = {
   defaultOptions?: OptionType[];
   incrementDefaultOptions?: boolean;
   onChange?: (
-    selectedValue: SingleValue<OptionType> | MultiValue<OptionType>
+    selectedValue: SingleValue<OptionType> | MultiValue<OptionType> | null
   ) => void;
 };
 
@@ -36,9 +36,9 @@ const ReactSelect = ({
   const [currentDefaultOptions, setCurrentDefaultOptions] =
     useState<OptionType[]>(defaultOptions);
 
+  // Função para buscar opções com base no inputValue
   const fetchOptions = async (inputValue: string) => {
     try {
-      // Constrói a URL para busca
       let new_url = url_api.includes("?") ? `${url_api}&` : `${url_api}?`;
       const response = await fetch(`${new_url}search=${inputValue}`, {
         method: "GET",
@@ -71,6 +71,24 @@ const ReactSelect = ({
     }
   };
 
+  // Busca inicial para popular as opções padrão
+  useEffect(() => {
+    if (incrementDefaultOptions) {
+      const fetchInitialOptions = async () => {
+        const initialOptions = await fetchOptions(""); // Busca inicial sem inputValue
+        setCurrentDefaultOptions((prevOptions) => {
+          const allOptions = [...prevOptions, ...initialOptions];
+          return Array.from(
+            new Map(allOptions.map((opt) => [opt.value, opt])).values()
+          );
+        });
+      };
+
+      fetchInitialOptions();
+    }
+  }, [url_api, incrementDefaultOptions]); // Executa sempre que a URL ou a flag mudar
+
+  // Gerenciar a mudança no valor selecionado
   const handleChange = (
     newValue: SingleValue<OptionType> | MultiValue<OptionType>
   ) => {
