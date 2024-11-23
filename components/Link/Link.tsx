@@ -2,7 +2,7 @@ import * as LucideIcons from 'lucide-react'; // Importa todos os ícones
 import { LucideProps } from 'lucide-react';
 
 export type LinkProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   icon?: keyof typeof LucideIcons;
   sizeIcon?: number;
   disabled?: boolean;
